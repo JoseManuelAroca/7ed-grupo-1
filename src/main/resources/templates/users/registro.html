@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/plantilla}">
+<head>
+    <title>Nuevo registro</title>
+    <link rel="stylesheet" th:href="@{/css/registro.css}">
+</head>
+<body>
+<div layout:fragment="contenido">
+    <div class="container">
+        <section class="left-panel">
+            <video autoplay muted loop playsinline>
+                <source th:src="@{/videos/gamer.mp4}" type="video/mp4" />
+                Tu navegador no soporta vídeos HTML5.
+            </video>
+        </section>
+        <div class="right-panel">
+            <div class="form-container">
+                <h2 class="title-cuenta glitch">
+                    Crea tu cuenta
+                </h2>
+
+                <div th:if="${param.error}">
+                    Email o contraseñas diferentes
+                </div>
+
+                <form th:action= "@{/user/registro}" method= "post" th:object="${datosUsuario}">
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" maxlength="50" th:field="*{name}"/>
+                    </div>
+                    <div>
+                        <label for="apodo">Apodo</label>
+                        <input type="text" id="apodo" name="apodo" maxlength="30" th:field="*{nick}"/>
+                    </div>
+                    <div>
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" maxlength="100" th:field="*{surname}"/>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" maxlength="100" th:field="*{email}"/>
+                    </div>
+                    <div>
+                        <label for="confirmEmail">Confirmar Email</label>
+                        <input type="email" id="confirmEmail" name="confirmEmail" maxlength="100" th:field="*{confirmEmail}"/>
+                    </div>
+                    <div>
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" maxlength="50" th:field="*{password}"/>
+                    </div>
+                    <div>
+                        <label for="confirmPassword">Confirmar Contraseña</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" maxlength="50" th:field="*{confirmPassword}" />
+                    </div>
+                    <div class="terms">
+                        <input type="checkbox" id="terms" name="terms" />
+                        <label for="terms">Acepto términos y condiciones</label>
+                    </div>
+                    <div class="buttons">
+                        <button class="button-49" type="submit"  role="button">CREAR CUENTA</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</head>
+</html>

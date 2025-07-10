@@ -1,0 +1,352 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables de color */
+:root {
+  --color-principal: #993BC4;
+  --color-secundario: #E601BB;
+  --color-cyan: #79ECF2;
+  --c-0: #000000;
+  --c-1: #353540;
+}
+
+/* Animación glitch corregida */
+@keyframes glitch {
+  0% { text-shadow: 2px 2px var(--color-principal); }
+  20% { text-shadow: -2px 2px var(--color-secundario); }
+  40% { text-shadow: 2px -2px var(--color-cyan); }
+  60% { text-shadow: -2px -2px var(--color-principal); }
+  80% { text-shadow: 2px 2px var(--color-secundario); }
+  100% { text-shadow: none; }
+}
+
+/* Animación zoomGlowColor */
+@keyframes zoomGlowColor {
+  0% {
+    transform: scale(1);
+    color: var(--color-cyan);
+    text-shadow: 0 0 5px var(--color-cyan);
+  }
+  25% {
+    transform: scale(1.1);
+    color: var(--color-principal);
+    text-shadow: 0 0 10px var(--color-principal);
+  }
+  50% {
+    transform: scale(1);
+    color: var(--color-secundario);
+    text-shadow: 0 0 15px var(--color-secundario);
+  }
+  75% {
+    transform: scale(1.1);
+    color: #241DCC;
+    text-shadow: 0 0 10px #241DCC;
+  }
+  100% {
+    transform: scale(1);
+    color: var(--color-cyan);
+    text-shadow: 0 0 5px var(--color-cyan);
+  }
+}
+
+/* Clase con animación de zoom y glow */
+.zoom-glow {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  animation: zoomGlowColor 4s ease-in-out infinite;
+}
+
+
+/* Descripción de la consola con su imagen */
+
+.contenedor-descripcion{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo-consola {
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 30px;
+  color: #ff4081;
+  animation: glitch 1.5s infinite;
+}
+
+.contenedor-centro {
+  margin: 30px 0;
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  gap:100px;
+}
+
+.imagen-con-texto {
+  position: relative;
+  max-height:80%;
+  max-width: 80%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.imagen-con-texto img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+
+.texto-sobre-imagen {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 3.5rem;
+}
+
+/* Modalidades de torneos */
+.modalidades{
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 20px;
+  max-width:80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.modalidades-info .l-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+/*@media screen and (max-width: 760px) {*/
+/*  .modalidades-info .l-container {*/
+/*    grid-template-columns: repeat(2, 1fr);*/
+/*  }*/
+/*}*/
+
+.modalidades-info .b-game-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: 150%;
+  perspective: 1000px;
+}
+
+
+
+.modalidades-info .b-game-card__cover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform-origin: top center;
+  will-change: transform;
+  transform: skewX(0.001deg);
+  transition: transform 0.35s ease-in-out;
+}
+
+.modalidades-info .b-game-card__cover::after {
+  display: block;
+  content: '';
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(
+          226deg,
+          rgba(255, 255, 255, 0.4) 0%,
+          rgba(255, 255, 255, 0.4) 35%,
+          rgba(255, 255, 255, 0.2) 42%,
+          rgba(255, 255, 255, 0) 60%
+  );
+  transform: translateY(-20%);
+  will-change: transform;
+  transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+}
+
+.modalidades-info .b-game-card:hover .b-game-card__cover {
+  transform: rotateX(7deg) translateY(-6px);
+}
+
+.modalidades-info .b-game-card:hover .b-game-card__cover::after {
+  transform: translateY(0%);
+}
+
+.modalidades-info .b-game-card::before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 12px 12px rgba(0, 0, 0, 0.4);
+  will-change: opacity;
+  transform-origin: top center;
+  transform: skewX(0.001deg);
+  transition: transform 0.35s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.modalidades-info .b-game-card:hover::before {
+  opacity: 0.6;
+  transform: rotateX(7deg) translateY(-6px) scale(1.05);
+}
+
+/* Carousel o Slider de juegos*/
+#carouselJuegos .carousel-inner {
+  height: 100%;
+  overflow: hidden;
+  background-color: black;
+}
+
+#carouselJuegos .carousel-item img {
+  height:100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-custom {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius:20px;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+
+/* Boton Inscripción Torneo */
+.boton-animado {
+  position: relative;
+  display: inline-block; /* Se ajusta al texto */
+  padding: 20px 50px;
+  background: rgba(121, 236, 242, 0.17);
+  color: #79ECF2;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align:center;
+  letter-spacing: 4px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+  border: none;
+  white-space: nowrap; /*Evita que el texto salte de línea */
+}
+
+.boton-animado:hover {
+  background-color: rgba(121, 236, 242, 0.3);
+  transform: scale(1.05);
+  transition: 1s;
+}
+
+
+.boton-animado:visited {
+  color: #999; /* Elimina el color azul por defecto de los enlaces visitados */
+}
+
+.boton-animado span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #E601BB, #993BC4);
+  animation: animate1 2s linear infinite;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.boton-animado span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(to bottom, #171618, #79ECF2);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.boton-animado span:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to left, #E601BB, #993BC4);
+  animation: animate3 2s linear infinite;
+}
+
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.boton-animado span:nth-child(4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(to top, #171618, #79ECF2);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+
+

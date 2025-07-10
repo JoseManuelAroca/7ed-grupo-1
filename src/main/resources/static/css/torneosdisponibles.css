@@ -1,0 +1,299 @@
+.main-header {
+  text-align: center;
+  text-align: center;
+  margin: 60px 0 40px;
+}
+
+.main-header h1 {
+  font-size: 2.5rem;
+  color: #f4f4f4;
+}
+
+.title-torneo {
+  font-size: 80px;
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  position: relative;
+  color: var(--color-blanco);
+  z-index: 1;
+  letter-spacing: 4px;
+  text-align: center;
+  animation: glitch-skew 2s infinite ease-in-out;
+}
+
+/* GLITCH EFECTO */
+.glitch {
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+  -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+  0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  animation: glitch 500ms infinite;
+}
+
+.glitch span {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.glitch span:first-child {
+  animation: glitch 650ms infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-0.025em, -0.0125em);
+  opacity: 0.8;
+}
+
+.glitch span:last-child {
+  animation: glitch 375ms infinite;
+  clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+  transform: translate(0.0125em, 0.025em);
+  opacity: 0.8;
+}
+
+@keyframes glitch {
+  0%, 14% {
+    text-shadow: 0.05em 0 0 rgba(230, 1, 187, 0.75),
+    -0.05em -0.025em 0 rgba(36, 29, 204, 0.75),
+    -0.025em 0.05em 0 rgba(153, 59, 196, 0.75);
+  }
+  15%, 49% {
+    text-shadow: -0.05em -0.025em 0 rgba(121, 236, 242, 0.75),
+    0.025em 0.025em 0 rgba(230, 1, 187, 0.75),
+    -0.05em -0.05em 0 rgba(153, 59, 196, 0.75);
+  }
+  50%, 99% {
+    text-shadow: 0.025em 0.05em 0 rgba(230, 1, 187, 0.75),
+    0.05em 0 0 rgba(36, 29, 204, 0.75),
+    0 -0.05em 0 rgba(121, 236, 242, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(153, 59, 196, 0.75),
+    -0.025em -0.025em 0 rgba(121, 236, 242, 0.75),
+    -0.025em -0.05em 0 rgba(230, 1, 187, 0.75);
+  }
+}
+
+:root {
+  --card-width: 400px;
+  --card-height: 250px;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 2rem auto;
+}
+
+
+.card {
+  width: var(--card-width);
+  /* height: var(--card-height); */
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 2px;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: -6px;
+  border-radius: 20px;
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  z-index: -1;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  filter: blur(20px);
+  opacity: 0.6;
+}
+
+.card-inner {
+  background: #191c29;
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  border-radius: 12px;
+  padding: 1rem;
+  box-sizing: border-box;
+  flex-direction: row;
+}
+
+.card-img {
+  width: 130px;
+  height: 130px;
+  background-color: #444;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 1.5rem;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.card-content h3 {
+  color: #E601BB;
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+}
+
+.info p {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+}
+
+.info span.label {
+  color: #79ECF2;
+}
+
+.info span.value {
+  color: white;
+}
+
+.card-content button {
+  align-self: flex-start;
+  padding: 0.4rem 1rem;
+  border: none;
+  background-color: #E601BB;
+  color: white;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-content button:hover {
+  background-color: #b60094;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 40px auto 80px;
+}
+
+.pagination button {
+  padding: 0.5rem 1.5rem;
+  background-color: #3c67e3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #2a47b0;
+}
+
+.button-49,
+.button-49:after {
+  box-sizing: border-box;
+  min-width: 130px;
+  padding: 0 15px;
+  height: 44px;
+  font-size: 16px;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(45deg, transparent 5%, #e601bb 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 2px;
+  box-shadow: 4px 0px 0px #79ecf2;
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  overflow: hidden;
+  white-space: nowrap;
+
+  /* Flexbox para centrar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-49:after {
+  content: 'Crear cuenta';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #993bc4 5%);
+  text-shadow: -2px -2px 0px #e601bb, 2px 2px 0px #00E6F6;
+  clip-path: var(--slice-0, inset(50% 50% 50% 50%));
+  border-radius: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 16px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+}
+
+.button-49:hover {
+  transform: scale(1.05);
+}
+
+.button-49:hover:after {
+  animation: glitch-button 0.8s steps(2, end);
+}
+
+@keyframes glitch-button {
+  0% { clip-path: inset(80% -6px 0 0); transform: translate(-10px, -5px); }
+  10% { clip-path: inset(10% -6px 85% 0); transform: translate(5px, 5px); }
+  20% { clip-path: inset(80% -6px 0 0); transform: translate(-5px, 5px); }
+  30% { clip-path: inset(10% -6px 85% 0); transform: translate(0px, 3px); }
+  40% { clip-path: inset(50% -6px 30% 0); transform: translate(-3px, 0px); }
+  50% { clip-path: inset(10% -6px 85% 0); transform: translate(3px, 0px); }
+  60% { clip-path: inset(40% -6px 43% 0); transform: translate(3px, 5px); }
+  70% { clip-path: inset(50% -6px 30% 0); transform: translate(-5px, 5px); }
+  80% { clip-path: inset(80% -6px 5% 0); transform: translate(10px, -5px); }
+  90% { clip-path: inset(80% -6px 0 0); transform: translate(-5px, 0px); }
+  100% { clip-path: inset(80% -6px 0 0); transform: translate(0); }
+}

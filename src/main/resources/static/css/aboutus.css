@@ -1,0 +1,187 @@
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px 0;
+}
+
+.wrapper .box {
+  position: relative;
+  width: 320px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 30px;
+  transition: 0.5s;
+}
+
+/* look of the tile */
+.wrapper .box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 50%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  transform: skewX(15deg);
+  transition: 0.5s;
+}
+
+/* look of the blur around tiles */
+.wrapper .box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 50%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  transform: skewX(15deg);
+  filter: blur(30px);
+  transition: 0.5s;
+}
+
+/* look after hover */
+.wrapper .box:hover:before,
+.wrapper .box:hover:after {
+  transform: skewX(0deg);
+  left: 20px;
+  width: calc(100% - 90px);
+}
+
+/* colors for each tile */
+.wrapper .box:nth-child(1):before,
+.wrapper .box:nth-child(1):after {
+  background: linear-gradient(315deg, #E601BB, #993BC4, #6A0D7A);
+}
+
+.wrapper .box:nth-child(2):before,
+.wrapper .box:nth-child(2):after {
+  background: linear-gradient(315deg, #1A28A6, #3E95B0, #0757C0);;
+}
+
+.wrapper .box:nth-child(3):before,
+.wrapper .box:nth-child(3):after {
+  background: linear-gradient(315deg, #000000cc, #E601BBcc);
+}
+
+.wrapper .box span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.wrapper .box span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 8px solid transparent;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.5s;
+  animation: animate 2s linear infinite;
+}
+
+/* size and position of first on hover rect */
+.wrapper .box:hover span::before {
+  top: -35px;
+  left: 35px;
+  width: 85px;
+  height: 85px;
+  opacity: 1;
+}
+
+/* size and position of second on hover rect */
+.wrapper .box span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: 8px solid transparent;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.5s;
+  animation: animate 2s linear infinite;
+  animation-delay: -1s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.wrapper .box:hover span::after {
+  bottom: -35px;
+  right: 100px;
+  width: 85px;
+  height: 85px;
+  opacity: 1;
+}
+
+/* animation to make on-hover tiles float */
+@keyframes animate {
+  0%, 100% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* position of box with content */
+.wrapper .box .content {
+  position: relative;
+  left: -20px;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: 0.5s;
+  z-index: 1;
+  color: #fff;
+  /* display: none; */
+}
+
+.wrapper .box:hover .content {
+  left: -60px;
+}
+
+.wrapper .box .content h2 {
+  font-size: 2em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.wrapper .box .content p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  line-height: 1.4em;
+}
+
+.wrapper .box .content a {
+  display: inline-block;
+  font-size: 1.1em;
+  color: #111;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+

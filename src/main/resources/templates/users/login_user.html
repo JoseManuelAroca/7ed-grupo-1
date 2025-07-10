@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/plantilla}">
+<head>
+    <title>User Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+
+<div layout:fragment="contenido" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="login-contenedor">
+        <h1>LOG IN</h1>
+        <div th:if="${param.exito}"> <!--si desde el controlador tenemos exito, añadimos otro div de alerta-->
+            <div class="alert alert-info">Se ha registrado exitosamente a
+                la aplicación</div>
+        </div>
+        <div th:if="${param.error}" th:text="${param.error}" />
+        <form th:action="@{/user/login}" method= "post">
+            <label for="username">👤 Nombre de Usuario</label>
+            <input type="text" id="username" name="username" placeholder="Ingresa tu usuario o email" />
+
+            <label for="password">🔒 Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" />
+
+            <button type="submit" class="boton-login">LOGIN</button>
+
+            <div class="texto-secundario">
+                <p><a href="/users/recuperar_contrasena" class="recuperar">¿Olvidaste tu contraseña?</a></p>
+                <p>¿No tienes cuenta?</p>
+                <p><a th:href="@{/user/registro}" class="boton-registro">Regístrate</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

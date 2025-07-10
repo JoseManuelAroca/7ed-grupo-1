@@ -1,0 +1,166 @@
+*{
+  box-sizing: border-box;
+}
+@keyframes parpadeoVs {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 5px #E601BB, 0 0 10px #993BC4;
+  }
+  100% {
+    opacity: 0.2;
+    text-shadow: 0 0 2px #E601BB, 0 0 4px #993BC4;
+  }
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  padding: 1rem 2rem;
+}
+
+.titulo {
+  text-align: center;
+}
+
+.titulo h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.titulo p {
+  margin: 0;
+  color: #ff00ff;
+  font-weight: bold;
+}
+
+.boton {
+  background-color: #ff00ff;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.boton:hover{
+  background-color: #993BC4;
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+
+.round-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: #79ECF2;
+  text-align: center;
+  text-shadow: 0 0 4px #993BC4;
+  margin-bottom: 1rem;
+}
+
+.enfrentamiento {
+  background-color: #000000;
+  border: 2px solid #E601BB;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px #993BC4, 0 0 20px #E601BB inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /*gap:8px;*/
+}
+
+.vs {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: #E601BB;
+  text-shadow: 0 0 5px #E601BB, 0 0 10px #993BC4;
+  animation: parpadeoVs 1s infinite alternate;
+}
+
+.bracket-container {
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  gap:2rem;
+  overflow-x:auto;
+  justify-content: space-around;
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+.round {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.round-1 .enfrentamiento { margin: 40px 0; }
+.round-2 .enfrentamiento { margin: 165px 0; }
+.round-3 .enfrentamiento { margin: 165px 0; }
+
+.jugador {
+  background-color: #a64bf4;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 0 10px #ff00ff60;
+  color: #fff;
+}
+
+.final-enfrentamiento {
+  position: relative;
+  background-color: #000;
+  border: 3px solid gold;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px gold, 0 0 30px #FFD700 inset;
+  color: white;
+  text-align: center;
+  width: 180px;
+  animation: brilloFinal 2s infinite alternate;
+}
+
+.final-enfrentamiento .vs {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: gold;
+  text-shadow: 0 0 8px gold, 0 0 16px #FFD700;
+  position: relative;
+}
+
+.final-enfrentamiento .vs::before,
+.final-enfrentamiento .vs::after {
+  content: "★";
+  color: #FFD700;
+  margin: 0 8px;
+  animation: parpadeoEstrella 1s infinite alternate;
+}
+
+@keyframes brilloFinal {
+  from {
+    box-shadow: 0 0 10px gold, 0 0 20px #FFD700 inset;
+  }
+  to {
+    box-shadow: 0 0 20px gold, 0 0 40px #FFD700 inset;
+  }
+}
+
+@keyframes parpadeoEstrella {
+  0% {
+    opacity: 0.6;
+    text-shadow: 0 0 3px gold;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 8px #FFD700, 0 0 12px gold;
+  }
+}

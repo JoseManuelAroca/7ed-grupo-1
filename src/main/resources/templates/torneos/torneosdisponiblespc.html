@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/plantilla}">
+<head>
+
+    <link rel="stylesheet" th:href="@{/css/torneosdisponibles.css}">
+</head>
+<body>
+
+<div layout:fragment="contenido">
+    <header class="main-header">
+        <h2 class="title-torneo glitch">TORNEOS PARA PC</h2>
+    </header>
+    <div class="cards-container">
+
+        <!-- Tarjeta dinámica -->
+        <div class="card" th:each="torneo : ${torneos}">
+            <div class="card-inner">
+                <img th:src="@{'/images/' + ${'logo' + #strings.replace(#strings.toLowerCase(torneo.gameName), ' ', '')} + '.png'}" class="card-img" alt="${torneo.gameName}" />
+                <div class="card-content">
+                    <h3 style="font-size:16px" th:text="${torneo.gameName}">Nombre del juego</h3>
+                    <div class="info">
+                        <p><span class="label">Juego:</span> <span class="value" th:text="${torneo.gameName}">Nombre del juego</span></p>
+                        <p><span class="label">Modalidad:</span> <span class="value" th:text="${torneo.modality}">Modalidad</span></p>
+                        <p><span class="label">Plazas:</span> <span class="value" th:text="${torneo.maxTeams + ' equipos'}">10 equipos</span></p>
+                        <p><span class="label">Inscritos:</span> <span class="value">jugadores inscritos</span></p>
+                        <p><span class="label">Comienza:</span> <span class="value" th:text="${torneo.initialDate + ' - ' + torneo.initialHour}">fecha - hora</span></p>
+                        <p><span class="label">Inicio inscripción:</span> <span class="value" th:text="${torneo.closeDate + ' - ' + torneo.closeHour}">fecha - hora</span></p>
+                    </div>
+                    <a th:href="@{'/torneos/inscripciontorneo?id=' + ${torneo.id}}">
+                        <button>Inscribirse</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+<!--        &lt;!&ndash; Tarjeta 2 &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--            <div class="card-inner">-->
+<!--                <img th:src="@{/images/logovalorant.png}" class="card-img" alt="Valorant" />-->
+<!--                <div class="card-content">-->
+<!--                    <h3>Valorant</h3>-->
+<!--                    <div class="info">-->
+<!--                        <p><span class="label">Juego:</span> <span class="value">Valorant</span></p>-->
+<!--                        <p><span class="label">Modalidad:</span> <span class="value">5v5</span></p>-->
+<!--                        <p><span class="label">Plazas:</span> <span class="value">10 equipos</span></p>-->
+<!--                        <p><span class="label">Inscritos:</span> <span class="value">6 equipos</span></p>-->
+<!--                        <p><span class="label">Inicio:</span> <span class="value">01/06/2025 - 18:00</span></p>-->
+<!--                        <p><span class="label">Cierre:</span> <span class="value">31/05/2025</span></p>-->
+<!--                    </div>-->
+<!--                    <button>Inscribirse</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Tarjeta 3 &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--            <div class="card-inner">-->
+<!--                <img th:src="@{/images/logooverwatch.png}" class="card-img" alt="Overwatch" />-->
+<!--                <div class="card-content">-->
+<!--                    <h3>Overwatch</h3>-->
+<!--                    <div class="info">-->
+<!--                        <p><span class="label">Juego:</span> <span class="value">Overwatch</span></p>-->
+<!--                        <p><span class="label">Modalidad:</span> <span class="value">5v5</span></p>-->
+<!--                        <p><span class="label">Plazas:</span> <span class="value">10 equipos</span></p>-->
+<!--                        <p><span class="label">Inscritos:</span> <span class="value">6 equipos</span></p>-->
+<!--                        <p><span class="label">Inicio:</span> <span class="value">01/06/2025 - 18:00</span></p>-->
+<!--                        <p><span class="label">Cierre:</span> <span class="value">31/05/2025</span></p>-->
+<!--                    </div>-->
+<!--                    <button>Inscribirse</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Tarjeta 4 &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--            <div class="card-inner">-->
+<!--                <img th:src="@{/images/logorocketleague.png}" class="card-img" alt="Rocket League" />-->
+<!--                <div class="card-content">-->
+<!--                    <h3>Rocket League</h3>-->
+<!--                    <div class="info">-->
+<!--                        <p><span class="label">Juego:</span> <span class="value">Rocket League</span></p>-->
+<!--                        <p><span class="label">Modalidad:</span> <span class="value">3v3</span></p>-->
+<!--                        <p><span class="label">Plazas:</span> <span class="value">10 equipos</span></p>-->
+<!--                        <p><span class="label">Inscritos:</span> <span class="value">6 equipos</span></p>-->
+<!--                        <p><span class="label">Inicio:</span> <span class="value">01/06/2025 - 18:00</span></p>-->
+<!--                        <p><span class="label">Cierre:</span> <span class="value">31/05/2025</span></p>-->
+<!--                    </div>-->
+<!--                    <button>Inscribirse</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Tarjeta 5 &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--            <div class="card-inner">-->
+<!--                <img th:src="@{/images/logocounterstrike.png}" class="card-img" alt="Counter-Strike 2" />-->
+<!--                <div class="card-content">-->
+<!--                    <h3>Counter-Strike 2</h3>-->
+<!--                    <div class="info">-->
+<!--                        <p><span class="label">Juego:</span> <span class="value">Counter-Strike 2</span></p>-->
+<!--                        <p><span class="label">Modalidad:</span> <span class="value">5v5</span></p>-->
+<!--                        <p><span class="label">Plazas:</span> <span class="value">10 equipos</span></p>-->
+<!--                        <p><span class="label">Inscritos:</span> <span class="value">6 equipos</span></p>-->
+<!--                        <p><span class="label">Inicio:</span> <span class="value">01/06/2025 - 18:00</span></p>-->
+<!--                        <p><span class="label">Cierre:</span> <span class="value">31/05/2025</span></p>-->
+<!--                    </div>-->
+<!--                    <button>Inscribirse</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Tarjeta 6 &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--            <div class="card-inner">-->
+<!--                <img th:src="@{/images/logotekken8.png}" class="card-img" alt="Tekken 8" />-->
+<!--                <div class="card-content">-->
+<!--                    <h3>League of Legends</h3>-->
+<!--                    <div class="info">-->
+<!--                        <p><span class="label">Juego:</span> <span class="value">Tekken 8</span></p>-->
+<!--                        <p><span class="label">Modalidad:</span> <span class="value">1v1</span></p>-->
+<!--                        <p><span class="label">Plazas:</span> <span class="value">10 jugadores</span></p>-->
+<!--                        <p><span class="label">Inscritos:</span> <span class="value">6 jugadores</span></p>-->
+<!--                        <p><span class="label">Inicio:</span> <span class="value">01/06/2025 - 18:00</span></p>-->
+<!--                        <p><span class="label">Cierre:</span> <span class="value">31/05/2025</span></p>-->
+<!--                    </div>-->
+<!--                    <button>Inscribirse</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+    <div class="pagination">
+        <button class="button-49" role="button">ANTERIOR</button>
+        <button class="button-49" role="button">SIGUIENTE</button>
+    </div>
+</div>
+</body>
+</html>

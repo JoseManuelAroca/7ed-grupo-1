@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/plantilla}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/recuperar_contrasena.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow&display=swap" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="contenido" class="main-content">
+    <h1 class="no-wrap">Recuperar contraseña</h1>
+    <p>Ingresa tu correo electrónico para recibir un enlace de recuperación.</p>
+    <form method="POST" action="/user/login">
+        <input type="email" name="email" placeholder="Correo electrónico" required autocomplete="email" />
+        <button type="submit" class="polygon-btn">Recuperar</button>
+    </form>
+    <a href="/user/login" class="volver-login">← Volver al inicio de sesión</a>
+</div>
+</body>
+</html>

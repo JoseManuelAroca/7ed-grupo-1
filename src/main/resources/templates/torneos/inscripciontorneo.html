@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/plantilla}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/inscripciontorneo.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow&display=swap" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="contenido" class="main-content">
+    <div class="contenedor-apaisado">
+
+        <div class="panel-izquierdo">
+            <div class="titulo-imagen">
+                <h2 class="title-fc glitch">TORNEO 1v1</h2>
+            </div>
+
+            <div class="carrusel">
+                <div class="carrusel-inner">
+                    <img th:src="@{/images/juegofc25.jpg}" alt="FC25">
+                    <img th:src="@{/images/juegomortalkombat.jpg}" alt="Mortal Kombat 1">
+                    <img th:src="@{/images/juegotekken8.png}" alt="Tekken 8">
+                    <img th:src="@{/images/juegostreetfighter6.png}" alt="Street Fighter 6">
+                    <img th:src="@{/images/juegosmashbrosultimate.png}" alt="Smash Bros Ultimate">
+                    <img th:src="@{/images/juegopokemonvgc.jpg}" alt="Pokemon VGC">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel-derecho formulario-contenedor">
+            <h1>INSCRIPCIÓN</h1>
+            <form>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Introduce tu nombre" required>
+
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Introduce tu apellido" required>
+
+                <label for="apodo">Apodo</label>
+                <input type="text" id="apodo" name="apodo" placeholder="Apodo" required>
+
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" placeholder="ejemplo@email.com" required>
+
+                <label for="plataforma">Plataforma</label>
+                <select id="plataforma" name="plataforma" required>
+                    <option value="">Selecciona consola</option>
+                    <option value="ps5">PlayStation 5</option>
+                    <option value="xbox">Xbox Series X</option>
+                    <option value="switch">Nintendo Switch</option>
+                </select>
+
+                <div class="checkbox-terminos">
+                    <input type="checkbox" id="terminos" name="terminos" required>
+                    <label for="terminos">Acepto los términos y condiciones.</label>
+                </div>
+
+                <button class="button-49" role="button">ENVIAR</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Aqui vamos a escribir el contenido de los bloques  -->
+<nav layout:fragment="menu">
+    <div class="outline">
+        <div class="logo">
+            <img th:src="@{/images/loguito3.png}" alt="">
+        </div>
+        <ul>
+            <div class="left">
+                <li> <a href="/home">Home</a></li>
+                <li>
+                    <div class="dropdown">
+                        Torneos
+                        <div class="dropdown-content">
+                            <a href="/consolas/nintendoswitch">Nintendo Switch</a>
+                            <a href="/consolas/pc">PC</a>
+                            <a href="/consolas/playstation">Playstation 5</a>
+                            <a href="/consolas/xbox">Xbox</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/about_us">Sobre nosotros</a></li>
+            </div>
+            <div class="wrap">
+                <a href="/user/login"><button class="polygon-btn">
+                    Login
+                </button></a>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+
+<main layout:fragment="contenido"></main>
+
+<footer layout:fragment="footer" class="footer">
+
+
+    <div class="footer-logo">
+        <h1><span class="last">LAST</span> <span class="pinky">GLITCH</span></h1>
+    </div>
+
+    <div class="footer-section community">
+        <h1>Únete a nuestra comunidad</h1>
+        <div class="social-icons">
+            <a href="#"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-white-icon.svg" alt="Discord"></a>
+        </div>
+    </div>
+
+
+</footer>
+
+<!-- Bootstrap Bundle con Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

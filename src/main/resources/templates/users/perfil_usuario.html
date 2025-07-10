@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/plantilla}">
+<head>
+    <title>Perfil Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/perfilusuario.css}">
+</head>
+
+<body>
+
+    <div layout:fragment="contenido">
+        <main class="contenedor-principal">
+
+            <div class="menu-usuario">
+                <ul>
+                    <li class="lista-opcion">Perfil</li>
+                    <li class="lista-opcion">Información de juego</li>
+                    <li class="lista-opcion">Conexiones sociales</li>
+                    <li class="lista-opcion">Configuración de torneos</li>
+                    <li class="lista-opcion">Privacidad y seguridad</li>
+                    <li class="lista-opcion">Notificaciones</li>
+                    <li class="lista-opcion">Cuenta</li>
+                </ul>
+            </div>
+            
+                <section class="contenedor-informacionUsuario" id="opcion_perfil">
+
+                    <div class="cabecera-informacionUsuario">
+                        <img th:src="@{/images/avatar.png}" alt="img_user">
+                        <div>
+                            <p>NombreUsuario</p>
+                            <p>Biografía</p>
+                            <p>País</p>
+                        </div>
+                    </div>
+
+                    <h2 class="informacionUsuario-titulo">INFORMACIÓN COMPETITIVA</h2>
+
+                    <p class="parrafo-informacionCompetitiva"><span>Juegos:</span> Valorant,League of Legends</p>
+                    <p class="parrafo-informacionCompetitiva"><span>Consolas:</span> PC,Nintendo Switch</p>
+                    <p class="parrafo-informacionCompetitiva"><span>Roles:</span> Support, Sniper</p>
+
+                    <h2 class="informacionUsuario-titulo">ESTADÍSTICAS PERSONALES</h2>
+
+                    <article class="contenedor-estadisticas">
+                        <div class="caja-estadisticas">
+                            <p class="parrafo-estadisticas">Categoría más jugada <span>Speedrun</span></p>
+                        </div>
+                        <div class="caja-estadisticas">
+                            <p class="parrafo-estadisticas">Partidas jugadas <span>78</span></p>
+                        </div>
+                        <div class="caja-estadisticas">
+                            <p class="parrafo-estadisticas">Victorias <span>54</span></p>
+                        </div>
+                        <div class="caja-estadisticas">
+                            <p class="parrafo-estadisticas">Ratio de victorias <span>86%</span></p>
+                        </div>
+                    </article>
+
+                    <div class="footer-informacionUsuario">
+                        <p>CONEXIONES:</p>
+                        <img th:src="@{/images/twitch.png}" alt="twitch_img">
+                        <img th:src="@{/images/discord.png}" alt="discord_img">
+                        <img th:src="@{/images/playstation.png}" alt="playstation_img">
+                    </div>
+                </section>
+                <section class="contenedor-informacionUsuario" id="opcion_infoJuego">
+                    <h2 class="informacionUsuario-titulo">GRÁFICO DE RENDIMIENTO</h2>
+                    <img th:src="@{/images/Grafico_usuario.png}" alt="grafico_de_rendimiento_del_usuario">
+
+                    <h2 class="informacionUsuario-titulo">HISTORIAL DE PARTIDAS</h2>
+
+                    <article class="contenedor-tabla">
+                        <table class="tabla-historialPartidas">
+                            <thead>
+                            <tr>
+                                <th>Fecha/Hora</th>
+                                <th>Juego</th>
+                                <th>Resultado</th>
+                                <th>Duración</th>
+                                <th>Categoría</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td>23/02/2025</td>
+                                <td>League of Legends</td>
+                                <td>Derrota</td>
+                                <td>39:55</td>
+                                <td>5 vs 5</td>
+                            </tr>
+
+                            <tr>
+                                <td>24/02/2025</td>
+                                <td>League of Legends</td>
+                                <td>Victoria</td>
+                                <td>41:17</td>
+                                <td>5 vs 5</td>
+                            </tr>
+
+                            <tr>
+                                <td>17/04/2025</td>
+                                <td>Hollow Knight</td>
+                                <td>2º puesto</td>
+                                <td>33:58</td>
+                                <td>Speedrun</td>
+                            </tr>
+
+                            <tr>
+                                <td>22/04/2025</td>
+                                <td>Counter Strike</td>
+                                <td>Victoria</td>
+                                <td>08:13</td>
+                                <td>5 vs 5</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </article>
+                </section>
+                <section class="contenedor-informacionUsuario" id="opcion_notificaciones">
+                    <h2 class="informacionUsuario-titulo">NOTIFICACIONES</h2>
+                    <p class="parrafo-notificaciones">PENDIENTES </p>
+                    <article class="mensaje-notificación">
+                        <p>Solicitud de inscripcion para el torneo FIFA FC 25</p>
+                        <p>11/06/2025 <button>Comprobar</button></p>
+                    </article>
+                    <p class="parrafo-notificaciones">LEIDAS </p>
+                    <article class="mensaje-notificación">
+                        <p>Validación del resultado del partido A del torneo FIFA FC 25</p>
+                        <p>07/06/2025 <button>Comprobar</button></p>
+                    </article>
+                </section>
+        </main>
+
+        <script th:src="@{/javascript/perfilusuario.js}"></script>
+    </div>
+
+</body>
+</html>

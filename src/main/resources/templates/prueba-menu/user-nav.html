@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+<body>
+<!-- Aqui vamos a escribir el contenido de los bloques  -->
+<nav layout:fragment="menu2">
+        <div class="outline">
+            <div class="logo">
+                <img th:src="@{/images/loguito3.png}" alt="">
+            </div>
+            <ul>
+                <div class="left">
+                    <li> <a href="/home">Home</a></li>
+                    <li>
+                        <div class="dropdown">
+                           Torneos
+                            <div class="dropdown-content">
+                                <a href="/consolas/nintendoswitch">Nintendo Switch</a>
+                                <a href="/consolas/pc">PC</a>
+                                <a href="/consolas/playstation">Playstation 5</a>
+                                <a href="/consolas/xbox">Xbox</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/about_us">Sobre nosotros</a></li>
+                </div>
+                <div class="wrap-icons">
+                    <i class="fa-regular fa-bell"></i>
+                    <i class="fa-regular fa-circle-user"></i>
+                </div>
+            </ul>
+        </div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+:root {
+  --color-morado: #993BC4;
+  --color-rosa: #E601BB;
+  --color-negro: #000000;
+  --color-azul-oscuro: #241DCC;
+  --color-cyan: #79ECF2;
+  --color-blanco: #ffffff;
+
+  --fuente-titulos: 'Bebas Neue', cursive;
+  --fuente-cuerpo: 'Barlow', sans-serif;
+  --fuente-decorativa: 'Press Start 2P', cursive;
+}
+
+body {
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  font-family: var(--fuente-cuerpo);
+  margin: 0;
+  padding: 0;
+}
+
+.login-contenedor {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px var(--color-morado);
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(6px);
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-rosa);
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  font-family: var(--fuente-titulos);
+  font-weight: normal;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--color-cyan);
+  font-family: var(--fuente-cuerpo);
+}
+
+input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-azul-oscuro);
+  background-color: #1a1a2f;
+  color: var(--color-blanco);
+  font-size: 1rem;
+  font-family: var(--fuente-cuerpo);
+}
+
+input::placeholder {
+  color: #aaaacb;
+  font-family: var(--fuente-cuerpo);
+}
+
+.boton-login {
+  padding: 12px 20px;  /* Manteniendo la altura igual, pero reduciendo el ancho */
+  background-color: var(--color-rosa);
+  color: var(--color-blanco);
+  font-size: 20px;  /* Mantenemos el tamaño de la fuente igual */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: var(--fuente-titulos);
+  text-transform: uppercase;
+}
+
+
+
+.boton-login:hover {
+  background-color: var(--color-morado);
+}
+
+.boton-registro {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: var(--color-rosa);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+.boton-registro:hover {
+  color: var(--color-morado);
+}
+
+.texto-secundario {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: var(--color-cyan);
+  font-family: var(--fuente-cuerpo);
+}
+
+.texto-secundario a {
+  color: var(--color-rosa);
+  text-decoration: none;
+  font-family: var(--fuente-cuerpo);
+}
+
+.texto-secundario a:hover {
+  text-decoration: underline;
+}
+
+[layout\:fragment="contenido"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}

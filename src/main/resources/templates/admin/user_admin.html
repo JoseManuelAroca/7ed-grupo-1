@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es"
+      xmlns:layout="ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/plantilla_admin}">
+<head>
+    <title>User Admin</title>
+    <link rel="stylesheet" th:href="@{/css/useradmin.css}">
+</head>
+<body>
+<div layout:fragment="contenido">
+
+    <header class="cabecera">
+        <img th:src="@{/images/torneo-de-juegos.png}" class="img_admin" alt="admin_img">
+        <h1>¡BIENVENIDO! <span>USUARIO ADMIN</span></h1>
+        <p>PANEL DE ADMINISTRACIÓN</p>
+    </header>
+
+    <section class="contenedor-añadirTorneos">
+
+        <form class="formulario-torneo" th:action="@{/admin/torneos/guardar}" th:object="${tournament}" method="post">
+
+            <h3>AGREGAR TORNEOS:</h3>
+            <input type="hidden" th:field="*{id}" />
+
+            <label>Fecha de inicio:</label>
+            <input type="datetime-local" th:field="*{initialDate}" required />
+
+            <label>Tiempo de espera máximo (minutos):</label>
+            <input type="number" th:field="*{waitingTime}" required />
+
+            <label>Número máximo de equipos:</label>
+            <input type="number" th:field="*{maxTeams}" required />
+
+            <label>Mismo número de jugadores por equipo:</label>
+            <input type="checkbox" th:field="*{sameNumberUsersPerTeam}" />
+
+            <label>Máximo jugadores por equipo:</label>
+            <input type="number" th:field="*{maxUsersPerTeam}" required />
+
+            <label>Juegos disponibles:</label>
+            <select th:field="*{gameId}" required>
+                <option value="" disabled selected>-- Selecciona un juego --</option>
+                <option th:each="game : ${games}" th:value="${game.id}" th:text="${game.name}"></option>
+            </select>
+
+            <button type="submit">Guardar Torneo</button>
+        </form>
+    </section>
+
+    <section class="contenedor-torneosDisponibles">
+
+        <form class="filtro-torneos" method="get" th:action="@{/admin/user_admin}">
+            <label>Filtrar por consola:</label>
+            <select name="consoleId">
+                <option value="">-- Todas --</option>
+                <option th:each="console : ${consoles}"
+                        th:value="${console.id}"
+                        th:text="${console.name}"></option>
+            </select>
+
+            <label>Filtrar por estado:</label>
+            <select name="status">
+                <option value="">-- Todos --</option>
+                <option th:each="st : ${statuses}"
+                        th:value="${st}"
+                        th:text="${st.description}"></option>
+            </select>
+
+            <button type="submit">Filtrar</button>
+        </form>
+
+        <h3>TORNEOS DISPONIBLES:</h3>
+
+        <article class="contenedor-tablas">
+            <table id="tabla-torneosDisponibles">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Juego</th>
+                    <th>Modalidad</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                    <th>Participantes</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="torneo : ${torneos}">
+                    <td th:text="${torneo.id}">1</td>
+                    <td th:text="${torneo.gameName}">FIFA FC 25</td>
+                    <td th:text="${torneo.modality}">1 VS 1</td>
+                    <td th:text="${torneo.initialDate}">26/05/2025</td>
+                    <td th:text="${torneo.initialHour}">19:00</td>
+                    <td th:text="${torneo.status.description}">19:00</td>
+                    <td>
+                        <button class="btn-MostrarJugadores colorMorado">MOSTRAR JUGADORES</button>
+                        <button class="btn-ModificarJugadores colorVerde" th:onclick = "'window.location.href=\'/admin/user_admin?editId=' + ${torneo.id} + '\''">MODIFICAR</button>
+                        <button class="btn-BorrarJugadores colorRojo" th:onclick="'window.location.href=\'/admin/torneos/borrar/' + ${torneo.id} + '\''">BORRAR</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </article>
+    </section>
+
+    <section class="contenedor-jugadoresInscritos">
+
+        <h3>JUGADORES INSCRITOS: </h3>
+
+        <article class="contenedor-tablas">
+            <table id="tabla-jugadoresInscritos">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>C.Ronda</th>
+                    <th>Rol</th>
+                    <th>F.Entrenamiento</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Daniel</td>
+                    <td>Ronda 1-A</td>
+                    <td>Representante</td>
+                    <td>4/05/2025</td>
+                    <td>18:00</td>
+                    <td>Finalizado
+                        <button onclick = "document.getElementById('modalFoto').style.display='block'">COMPROBAR FOTO</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Miguel</td>
+                    <td>Ronda 1-A</td>
+                    <td>Participante</td>
+                    <td>4/05/2025</td>
+                    <td>18:00</td>
+                    <td>Finalizado</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Sandra</td>
+                    <td>Ronda 1-B</td>
+                    <td>Representante</td>
+                    <td>5/05/2025</td>
+                    <td>17:00</td>
+                    <td>Activo</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Maria</td>
+                    <td>Ronda 1-B</td>
+                    <td>Participante</td>
+                    <td>5/05/2025</td>
+                    <td>17:00</td>
+                    <td>Activo</td>
+                </tr>
+                </tbody>
+            </table>
+        </article>
+
+    </section>
+</div>
+
+</body>
+</html>

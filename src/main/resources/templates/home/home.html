@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:layout="ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/plantilla}">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<div layout:fragment="contenido">
+
+    <section class="video-hero">
+        <video autoplay muted loop playsinline>
+            <source th:src="@{/videos/videoglitch.mp4}" type="video/mp4" />
+            Tu navegador no soporta vídeos HTML5.
+        </video>
+        <div class="video-overlay">
+            <h1 class="title-home glitch">LAST GLITCH</h1>
+        </div>
+    </section>
+
+    <h1 class="torneos-header">Nuestros torneos disponibles</h1>
+
+    <div class= 'body-cards'>
+
+
+        <!-- Card: Nintendo Switch -->
+        <div class="card card-photo">
+            <img th:src="@{/images/imgHome/nswgaming.jpg}" alt="Card image" title="Nintendo Switch">
+            <h2 class="glitch" data-text="NINTENDO SWITCH">NINTENDO SWITCH</h2>
+            <p>Llévate la aventura a donde quieras. Disfruta de torneos de tus juegos favoritos como: Mario Kart 8 Deluxe o Pokémon entre otros</p>
+            <a href="#" class="read-more">EMPIEZA A JUGAR</a>
+        </div>
+
+        <!-- Card: PC -->
+        <div class="card card-photo">
+            <img th:src="@{/images/imgHome/pcgaming.jpg}" alt="Card image" title="PC Gaming">
+            <h2 class="glitch" data-text="PC">PC</h2>
+            <p>Máxima potencia para quienes lo quieren todo. Triunfa en el Valorant o el League of Legends y supera los desafíos más duros.</p>
+            <a href="#" class="read-more">¡PARTICIPA!</a>
+        </div>
+
+        <!-- Card: PlayStation -->
+        <div class="card card-photo">
+            <img th:src="@{/images/imgHome/ps5gaming.jpg}"alt="Card image" title="Play Station 5">
+            <h2 class="glitch" data-text="PLAYSTATION">PLAYSTATION</h2>
+            <p>Sumérgete en mundos imposibles con fidelidad cinematográfica. Participa en torneos de Call of Duty, FC25 y muchos más</p>
+            <a href="#" class="read-more">ME INTERESA</a>
+        </div>
+
+        <!-- Card: Xbox -->
+        <div class="card card-photo">
+            <img th:src="@{/images/imgHome/xboxgaming.jpg}" alt="Card image" title="Mando Xbox Serie X">
+            <h2 class="glitch" data-text="XBOX">XBOX</h2>
+            <p>Máxima destreza, estrategia y emoción en cada combate. Domina los torneos de Tekken 8, Mortal Kombat, Street Fighter 6 y más.</p>
+            <a href="#" class="read-more">¡INSCRÍBETE!</a>
+        </div>
+    </div>
+
+    <div class="background">
+        <div class="image-layer">
+            <div class="form-container">
+                <div class="form-header">
+                    <h1>¿ALGUNA SUGERENCIA?</h1>
+                    <p>CONTACTA CON NOSOTROS</p>
+                </div>
+                <form>
+                    <input type="text" placeholder="Nombre" required />
+                    <input type="email" placeholder="Email" required />
+                    <textarea placeholder="Mensaje" required></textarea>
+
+                    <button class="button-contact" type="submit">ENVIAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

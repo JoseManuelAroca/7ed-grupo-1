@@ -1,0 +1,26 @@
+# Este archivo se utiliza para configurar los servicios de contenedores en un entorno de desarrollo, como la base de datos PostgreSQL que interactúa con una aplicación Spring Boot.
+name: local
+services:
+  db:
+    # Imagen de Docker que se utilizará, en este caso PostgreSQL
+    image: postgres:latest
+    # Indica que el contenedor se reiniciará automáticamente si falla
+    restart: always
+    environment:
+      # Nombre de la base de datos que se creará al iniciar el contenedor
+      POSTGRES_DB: 'localdb'
+      # Usuario que se creará para acceder a la base de datos
+      POSTGRES_USER: 'localuser'
+      # Contraseña del usuario creado
+      POSTGRES_PASSWORD: 'password123'
+    ports:
+      # Mapea el puerto 5432 del contenedor al puerto 5433 del anfitrión
+      - '5433:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./cargasql/data.sql:/docker-entrypoint-initdb.d/data.sql
+    expose:
+      # Expone el puerto 5433 dentro del contenedor para comunicación con otros servicios
+      - '5433'
+volumes:
+  postgres_data:
